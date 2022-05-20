@@ -8,14 +8,14 @@ public class Controller : MonoBehaviour
     public float speed = 10.0f;
     private Rigidbody _body;
     private float _run;
-    private float _jump;
+    
     
     // Start is called before the first frame update
     void Start()
     {
        _body = GetComponent<Rigidbody>();
        _run = Input.GetAxis("Horizontal");
-       _jump = Input.GetAxis("Vertical");
+       
     }
     private Vector3 _movement = Vector3.zero;
 
