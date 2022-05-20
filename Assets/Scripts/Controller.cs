@@ -29,6 +29,10 @@ public class Controller : MonoBehaviour
     private void FixedUpdate()
     {          
         _body.MovePosition(_body.position + _movement * (speed * Time.deltaTime));
+        if (Input.GetKey(KeyCode.Space))
+        {
+            Debug.LogError("jump");
+        }
 
     }
 
