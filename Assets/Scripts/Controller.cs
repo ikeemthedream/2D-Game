@@ -15,7 +15,7 @@ public class Controller : MonoBehaviour
     {
        _body = GetComponent<Rigidbody>();
        _run = Input.GetAxis("Horizontal");
-       //_jump = Input.GetAxis("Vertical");
+       _jump = Input.GetAxis("Vertical");
     }
     private Vector3 _movement = Vector3.zero;
 
@@ -29,11 +29,6 @@ public class Controller : MonoBehaviour
     private void FixedUpdate()
     {          
         _body.MovePosition(_body.position + _movement * (speed * Time.deltaTime));
-        if (Input.GetKey(KeyCode.Space))
-        {
-            Debug.LogError("jump");
-        }
-
     }
 
     
