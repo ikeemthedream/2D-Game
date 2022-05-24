@@ -8,7 +8,8 @@ using Vector3 = UnityEngine.Vector3;
 public class Jump : MonoBehaviour
 {
     private Rigidbody rb;
-    public int maxDistance;
+    public float maxDistance = 2.0f;
+    public int counter = 2;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -16,25 +17,36 @@ public class Jump : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int layerMask = 1 << 8;
+       RayCastJump();
+       // setup a counter
+       // allow player two jumps
+       // player stops jumping when player runs out of jumps
+       //player can jump again when player touches ground 
 
-        RaycastHit hit;
+    }
+
+    private void RayCastJump()
+    {
+         int layerMask = 1 << 8;
         
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, maxDistance,
-                layerMask))
-        {
-            Debug.Log("Hit object");
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * maxDistance, Color.blue);
-            
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
-                Debug.Log("Jump");
-            }
-        }
-        else
-        {
-            Debug.Log("Did not hit object");
-        }
+                RaycastHit hit;
+                
+                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * maxDistance, Color.green);
+                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, maxDistance,
+                        layerMask))
+                {
+                    Debug.Log("Hit object");
+                    
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
+                        Debug.Log("Jump");
+                    }
+                }
+                else
+                {
+                    Debug.Log("Did not hit object");
+                }
+        
     }
 }
