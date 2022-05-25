@@ -675,6 +675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDistance: 1.5
+  counter: 0
 --- !u!1 &2009303605
 GameObject:
   m_ObjectHideFlags: 0
